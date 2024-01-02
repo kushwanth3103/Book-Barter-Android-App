@@ -43,12 +43,12 @@ public class PasswordReset extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(PasswordReset.this, "Reset Link Sucessfully sent", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        //startActivity(new Intent(getApplicationContext(), Login.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PasswordReset.this, "Error! Reset Link is not sent"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PasswordReset.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

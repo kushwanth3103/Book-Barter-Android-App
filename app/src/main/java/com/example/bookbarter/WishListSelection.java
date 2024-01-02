@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,9 @@ public class WishListSelection extends AppCompatActivity {
     Button save;
     List<ModelWishList> modelWishLists;
     MyAdapterWishList myAdapterWishList;
+    FirebaseAuth fAuth;
+    FirebaseUser user;
+    FirebaseFirestore fStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +43,12 @@ public class WishListSelection extends AppCompatActivity {
         modelWishLists.add(new ModelWishList("Thriller",R.drawable.thriller));
         modelWishLists.add(new ModelWishList("Detective",R.drawable.detective));
         modelWishLists.add(new ModelWishList("Romantic",R.drawable.romantic));
-        modelWishLists.add(new ModelWishList("Detective",R.drawable.detective));
-        modelWishLists.add(new ModelWishList("Romantic",R.drawable.romantic));
-        modelWishLists.add(new ModelWishList("Detective",R.drawable.detective));
-        modelWishLists.add(new ModelWishList("Romantic",R.drawable.romantic));
+        modelWishLists.add(new ModelWishList("Horror",R.drawable.horror));
+        modelWishLists.add(new ModelWishList("History",R.drawable.history));
+        modelWishLists.add(new ModelWishList("Comic",R.drawable.comic));
+        fAuth= FirebaseAuth.getInstance();
+        user=fAuth.getCurrentUser();
+        fStore=FirebaseFirestore.getInstance();
 
         myAdapterWishList=new MyAdapterWishList(WishListSelection.this,modelWishLists);
 
@@ -51,13 +60,8 @@ public class WishListSelection extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ModelWishList.count<3)
-                {
-                    Toast.makeText(WishListSelection.this, "Please Select atleast 3 Genres", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                }
+                    fStore.collection("users").document(user.getUid()).update("firsttimelogin",false);
+                    startActivity(new Intent(getApplicationContext(),profile.class));
             }
         });
     }

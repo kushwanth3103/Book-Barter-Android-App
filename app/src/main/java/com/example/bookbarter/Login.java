@@ -70,15 +70,32 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                         {
+                            user=fAuth.getCurrentUser();
                             if (!user.isEmailVerified()){
                                 Toast.makeText(Login.this,"Please verify email to continue!",Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             Toast.makeText(Login.this,"Logged In Successfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), WishListSelection.class));
+                            fStore.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        DocumentSnapshot documentSnapshot=task.getResult();
+                                        Boolean val=documentSnapshot.getBoolean("firsttimelogin");
+                                        if(val)
+                                        {
+                                            startActivity(new Intent(getApplicationContext(), WishListSelection.class));
+                                        }
+                                        else {
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        }
+                                    }
+                                }
+                            });
                         }
                         else {
-                            Toast.makeText(Login.this,"Error Occurred"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Entered Email or Password doesn't match or exist in system",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

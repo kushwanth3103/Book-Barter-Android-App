@@ -4,51 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Login">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Barter"
-        android:textColor="#FF9800"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@drawable/curveheader"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Book Barter"
+            android:textColor="#FAF9F7"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in to continue"
+            android:textColor="#fbc82d"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/textfieldbox"
         android:ems="10"
         android:hint="Enter E-Mail"
-        android:minHeight="48dp"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
+        android:textColorHint="#857D7D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
         android:id="@+id/password_forget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="15dp"
         android:text="Forget Password?"
-        android:textColor="#FF9800"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#6305dc"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.889"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textRegister"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_password" />
 
     <EditText
         android:id="@+id/enter_password"
@@ -57,12 +77,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/textfieldbox"
         android:ems="10"
         android:hint="Enter Password"
-        android:minHeight="48dp"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
+        android:textColorHint="#857D7D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,17 +100,20 @@
         android:layout_marginEnd="16dp"
         android:padding="15dp"
         android:text="Login"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_password" />
+        app:layout_constraintTop_toBottomOf="@+id/password_forget" />
 
     <TextView
         android:id="@+id/textRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="New Here? Register"
-        android:textColor="#FF9800"
+        android:text="Don't have account? Register"
+        android:textColor="#6305dc"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

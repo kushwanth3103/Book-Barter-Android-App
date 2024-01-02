@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="20dp">
+    android:layout_marginVertical="20dp"
+    android:background="#FFFFFF">
 
     <androidx.cardview.widget.CardView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardElevation="10dp"
         android:layout_marginVertical="10dp"
+        android:background="#FFFFFF"
+        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,7 +25,8 @@
         <RelativeLayout
             android:id="@+id/itemLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -39,11 +42,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageView"
                 android:layout_centerHorizontal="true"
+                android:textColor="#020000"
                 android:textSize="23sp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-    
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
